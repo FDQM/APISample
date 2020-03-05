@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:ApiSample"
+             x:Class="ApiSample.Views.DrinksPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Entry x:Name="RNC" Text="{Binding Category}" Grid.Row="0" Placeholder="Category"  Keyboard="Chat"/>
+            <Button BackgroundColor="Black" Text="Validate" TextColor="White" Grid.Row="1" Command="{Binding GetDrinksCommand}"  />
+            <ListView ItemsSource="{Binding DrinkList}" x:Name="DrinksList" Grid.Row="2" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate >
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding StrDrink}" TextColor="Black" />
+                                <Image Source="{Binding StrDrinkThumb}" HeightRequest="100" WidthRequest="100"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
